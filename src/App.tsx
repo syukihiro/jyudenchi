@@ -6,6 +6,7 @@ import { ResultPage } from './page';
 function App() {
   const [goalage, setGoalage] = useState<number>();
   const [age, setAge] = useState<number>();
+  const [eattime, setEattime] = useState<number>();
   const [openFlg, setOpenflg] = useState<boolean>(false);
   const disabledFlg = goalage && age  ? false : true;
 
@@ -15,6 +16,7 @@ function App() {
     if(!flg) {
       setAge(undefined);
       setGoalage(undefined);
+      setEattime(undefined);
     }
   }
 
@@ -27,8 +29,9 @@ function App() {
           justifyContent="center"
           alignItems="center"
           sx={{height: "100%"}}>
-            <TextFileld label='目標とする寿命'  onChange={setGoalage} />
-            <TextFileld label='現在の年齢'     onChange={setAge} />
+            <TextFileld label='目標とする寿命'    onChange={setGoalage} />
+            <TextFileld label='現在の年齢'       onChange={setAge} />
+            <TextFileld label='1日の生活する為の時間(食事/仕事/睡眠/学校)' onChange={setEattime} />
             <Button variant="contained" fullWidth size="large" disabled={disabledFlg} onClick={() => hanbleClickBtn(true)}>START</Button>
         </Stack>
       }
@@ -37,6 +40,7 @@ function App() {
         <ResultPage
           goalage={goalage}
           age={age}
+          eattime={eattime}
           hanbleClickBtn={hanbleClickBtn}
         />
       }
